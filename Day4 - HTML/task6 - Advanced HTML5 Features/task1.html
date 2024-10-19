@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Color Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .color-btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .red { background-color: red; color: white; }
+        .green { background-color: green; color: white; }
+        .blue { background-color: blue; color: white; }
+        .yellow { background-color: yellow; color: black; }
+    </style>
+</head>
+<body>
+
+    <h1>Select Your Theme Color</h1>
+    <button class="color-btn red" onclick="setThemeColor('red')">Red</button>
+    <button class="color-btn green" onclick="setThemeColor('green')">Green</button>
+    <button class="color-btn blue" onclick="setThemeColor('blue')">Blue</button>
+    <button class="color-btn yellow" onclick="setThemeColor('yellow')">Yellow</button>
+
+    <script>
+        // Function to set and save the theme color
+        function setThemeColor(color) {
+            // Set the background color
+            document.body.style.backgroundColor = color;
+
+            // Save the user's choice in localStorage
+            localStorage.setItem('themeColor', color);
+        }
+
+        // Function to load the saved theme color (if available) when the page is revisited
+        function loadThemeColor() {
+            const savedColor = localStorage.getItem('themeColor');
+            if (savedColor) {
+                document.body.style.backgroundColor = savedColor;
+            }
+        }
+
+        // Load the theme color when the page loads
+        window.onload = loadThemeColor;
+    </script>
+</body>
+</html>
